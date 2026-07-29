@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#fff4f7">
+  <title>Happy Birthday!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="small-title">SPECIAL BIRTHDAY PRESENT</p>
+      <h1>Happy Birthday!</h1>
+      <p class="description">
+        気になるプレゼントを<br>
+        タップして開けてみてね！
+      </p>
+    </header>
+
+    <section class="gift-area" aria-label="プレゼント一覧">
+      <button class="gift-button" type="button" data-gift="1" aria-label="プレゼント1を開く">
+        <span class="number">1</span>
+        <img src="assets/present.png" alt="プレゼントボックス1">
+      </button>
+
+      <button class="gift-button" type="button" data-gift="2" aria-label="プレゼント2を開く">
+        <span class="number">2</span>
+        <img src="assets/present.png" alt="プレゼントボックス2">
+      </button>
+
+      <button class="gift-button center-gift" type="button" data-gift="3" aria-label="プレゼント3を開く">
+        <span class="number">3</span>
+        <img src="assets/present.png" alt="プレゼントボックス3">
+      </button>
+
+      <button class="gift-button" type="button" data-gift="4" aria-label="プレゼント4を開く">
+        <span class="number">4</span>
+        <img src="assets/present.png" alt="プレゼントボックス4">
+      </button>
+
+      <button class="gift-button" type="button" data-gift="5" aria-label="プレゼント5を開く">
+        <span class="number">5</span>
+        <img src="assets/present.png" alt="プレゼントボックス5">
+      </button>
+    </section>
+
+    <p class="hint">どれから開けてもOK！</p>
+  </main>
+
+  <div class="modal" id="giftModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="true"></div>
+
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="sparkles" aria-hidden="true">✦　✧　✦</div>
+      <p class="opened-label">PRESENT OPEN!</p>
+      <h2 id="modalTitle"></h2>
+      <div id="modalContent" class="modal-content"></div>
+
+      <button id="closeButton" class="close-button" type="button">
+        プレゼントを閉じる
+      </button>
+    </section>
+  </div>
+
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
