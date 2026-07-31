@@ -1,3 +1,96 @@
+const gatePage = document.getElementById("gatePage");
+const birthdayPage = document.getElementById("birthdayPage");
+const passwordForm = document.getElementById("passwordForm");
+const mathQuestion = document.getElementById("mathQuestion");
+const answerInput = document.getElementById("answerInput");
+const answerMessage = document.getElementById("answerMessage");
+
+let correctAnswer = 0;
+
+function makeMathQuestion() {
+  const operators = ["＋", "－", "×", "÷"];
+  const operator =
+    operators[Math.floor(Math.random() * operators.length)];
+
+  let firstNumber;
+  let secondNumber;
+
+  switch (operator) {
+    case "＋":
+      firstNumber = Math.floor(Math.random() * 9) + 1;
+      secondNumber = Math.floor(Math.random() * 9) + 1;
+      correctAnswer = firstNumber + secondNumber;
+      break;
+
+    case "－":
+      firstNumber = Math.floor(Math.random() * 9) + 1;
+      secondNumber = Math.floor(Math.random() * 9) + 1;
+
+      // 答えがマイナスにならないようにする
+      if (firstNumber < secondNumber) {
+        [firstNumber, secondNumber] =
+          [secondNumber, firstNumber];
+      }
+
+      correctAnswer = firstNumber - secondNumber;
+      break;
+
+    case "×":
+      firstNumber = Math.floor(Math.random() * 9) + 1;
+      secondNumber = Math.floor(Math.random() * 9) + 1;
+      correctAnswer = firstNumber * secondNumber;
+      break;
+
+    case "÷":
+      // 割り切れて、両方とも1桁になる問題を作る
+      secondNumber = Math.floor(Math.random() * 9) + 1;
+
+      const maxAnswer = Math.floor(9 / secondNumber);
+      correctAnswer =
+        Math.floor(Math.random() * maxAnswer) + 1;
+
+      firstNumber = secondNumber * correctAnswer;
+      break;
+  }
+
+  mathQuestion.textContent =
+    `${firstNumber} ${operator} ${secondNumber} ＝ ？`;
+}
+
+function showBirthdayPage() {
+  answerMessage.textContent = "正解！ページを開きます…";
+  answerMessage.className = "answer-message is-correct";
+  gatePage.classList.add("is-leaving");
+
+  window.setTimeout(() => {
+    gatePage.hidden = true;
+    birthdayPage.hidden = false;
+    birthdayPage.classList.add("is-entering");
+    window.scrollTo(0, 0);
+  }, 430);
+}
+
+passwordForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const userAnswer = Number(answerInput.value);
+  if (answerInput.value.trim() === "") {
+    answerMessage.textContent = "答えを入力してね！";
+    answerMessage.className = "answer-message is-error";
+    return;
+  }
+
+  if (userAnswer === correctAnswer) {
+    showBirthdayPage();
+  } else {
+    answerMessage.textContent = "おしい！もう一度計算してみてね。";
+    answerMessage.className = "answer-message is-error";
+    answerInput.select();
+  }
+});
+
+makeMathQuestion();
+
 const modal = document.getElementById("giftModal");
 const modalTitle = document.getElementById("modalTitle");
 const modalContent = document.getElementById("modalContent");
@@ -6,32 +99,37 @@ const confetti = document.getElementById("confetti");
 
 const giftData = {
   1: {
-    title: "ざんねん！",
-    html: '<p class="result-text">はずれ！<br>もう一つ選んでみてね。</p>'
+    title: "はずれ！",
+    html: '<p class="result-text">ざんねん！<br>ほかの箱も開けてみてね。</p>'
   },
   2: {
-    title: "お誕生日おめでとう！",
-    html: '<p class="result-text">今年も良い1年になりますように！</p>'
+    title: "あたり！\nメッセージのプレゼント！",
+    html: '<p class="result-text">誕生日おめでとう！<br>今年もぜひ良い一年にしてね！</p>',
+    confetti: true
   },
   3: {
-    title: "イラストのプレゼント",
-    html: '<img class="illustration" src="assets/illustration.png" alt="誕生日のお祝いイラスト">'
+    title: "はずれ！",
+    html: '<p class="result-text">ざんねん！<br>まだ当たりが残っているかも？</p>'
   },
   4: {
-    title: "ざんねん！",
-    html: '<p class="result-text">はずれ！<br>まだ当たりがあるかも？</p>'
+    title: "あたり！\nイラストのプレゼント！",
+    html: '<img class="illustration" src="assets/illustration4.png" alt="4番のイラストのプレゼント">',
+    confetti: true
   },
   5: {
-    title: "大当たり！",
-    html: '<p class="result-text">あたり！<br>特別なプレゼントをどうぞ！</p>',
+    title: "ヒント！",
+    html: '<p class="result-text">あたりは3つだよ！</p>'
+  },
+  6: {
+    title: "あたり！\nイラストのプレゼント！",
+    html: '<img class="illustration" src="assets/illustration6.png" alt="6番のイラストのプレゼント">',
     confetti: true
   }
 };
 
 document.querySelectorAll(".gift-button").forEach((button) => {
   button.addEventListener("click", () => {
-    const giftNumber = button.dataset.gift;
-    openGift(giftNumber);
+    openGift(button.dataset.gift);
   });
 });
 

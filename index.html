@@ -3,49 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#fff4f7">
-  <title>Happy Birthday!</title>
+  <meta name="theme-color" content="#ffffff">
+  <title>Naooogle Birthday</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="page">
-    <header class="hero">
-      <p class="small-title">SPECIAL BIRTHDAY PRESENT</p>
-      <h1>Happy Birthday!</h1>
-      <p class="description">
-        気になるプレゼントを<br>
-        タップして開けてみてね！
-      </p>
-    </header>
+  <!-- 最初に表示される計算問題画面 -->
+  <main id="gatePage" class="gate-page">
+    <section class="search-card" aria-labelledby="gateTitle">
+      <h1 id="gateTitle" class="naooogle-logo" aria-label="Naooogle">
+        <span class="blue">N</span><span class="red">a</span><span class="yellow">o</span><span class="yellow">o</span><span class="blue">g</span><span class="green">l</span><span class="red">e</span>
+      </h1>
 
-    <section class="gift-area" aria-label="プレゼント一覧">
-      <button class="gift-button" type="button" data-gift="1" aria-label="プレゼント1を開く">
-        <span class="number">1</span>
-        <img src="assets/present.png" alt="プレゼントボックス1">
-      </button>
+      <p class="gate-message">誕生日ページへ進むには<br>計算問題を解いてね！</p>
+      <p id="mathQuestion" class="math-question" aria-live="polite"></p>
 
-      <button class="gift-button" type="button" data-gift="2" aria-label="プレゼント2を開く">
-        <span class="number">2</span>
-        <img src="assets/present.png" alt="プレゼントボックス2">
-      </button>
+      <form id="passwordForm" class="search-form" autocomplete="off">
+        <span class="plus-icon" aria-hidden="true">＋</span>
+        <input
+          id="answerInput"
+          type="number"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          placeholder="答えを入力"
+          aria-label="計算問題の答え"
+          required
+        >
+        <button class="search-button" type="submit" aria-label="答えを送信">⌕</button>
+      </form>
 
-      <button class="gift-button center-gift" type="button" data-gift="3" aria-label="プレゼント3を開く">
-        <span class="number">3</span>
-        <img src="assets/present.png" alt="プレゼントボックス3">
-      </button>
-
-      <button class="gift-button" type="button" data-gift="4" aria-label="プレゼント4を開く">
-        <span class="number">4</span>
-        <img src="assets/present.png" alt="プレゼントボックス4">
-      </button>
-
-      <button class="gift-button" type="button" data-gift="5" aria-label="プレゼント5を開く">
-        <span class="number">5</span>
-        <img src="assets/present.png" alt="プレゼントボックス5">
-      </button>
+      <p id="answerMessage" class="answer-message" aria-live="polite"></p>
+      <p class="gate-hint">答えを入力して、右のボタンかEnterを押してね</p>
     </section>
+  </main>
 
-    <p class="hint">どれから開けてもOK！</p>
+  <!-- 正解後に表示される既存のHappy Birthdayページ -->
+  <main id="birthdayPage" class="birthday-page" hidden>
+    <div class="page">
+      <header class="hero">
+        <p class="small-title">SPECIAL BIRTHDAY PRESENT</p>
+        <h1>Happy Birthday!</h1>
+        <p class="description">
+          気になるプレゼントを<br>
+          タップして開けてみてね！
+        </p>
+      </header>
+
+      <section class="gift-area" aria-label="プレゼント一覧">
+        <button class="gift-button" type="button" data-gift="1" aria-label="プレゼント1を開く">
+          <span class="number">1</span>
+          <img src="assets/present.png" alt="プレゼントボックス1">
+        </button>
+
+        <button class="gift-button" type="button" data-gift="2" aria-label="プレゼント2を開く">
+          <span class="number">2</span>
+          <img src="assets/present.png" alt="プレゼントボックス2">
+        </button>
+
+        <button class="gift-button" type="button" data-gift="3" aria-label="プレゼント3を開く">
+          <span class="number">3</span>
+          <img src="assets/present.png" alt="プレゼントボックス3">
+        </button>
+
+        <button class="gift-button" type="button" data-gift="4" aria-label="プレゼント4を開く">
+          <span class="number">4</span>
+          <img src="assets/present.png" alt="プレゼントボックス4">
+        </button>
+
+        <button class="gift-button" type="button" data-gift="5" aria-label="プレゼント5を開く">
+          <span class="number">5</span>
+          <img src="assets/present.png" alt="プレゼントボックス5">
+        </button>
+
+        <button class="gift-button" type="button" data-gift="6" aria-label="プレゼント6を開く">
+          <span class="number">6</span>
+          <img src="assets/present.png" alt="プレゼントボックス6">
+        </button>
+      </section>
+
+      <p class="hint">どれから開けてもOK！</p>
+    </div>
   </main>
 
   <div class="modal" id="giftModal" aria-hidden="true">
