@@ -75,7 +75,7 @@ passwordForm.addEventListener("submit", (event) => {
 
   const userAnswer = Number(answerInput.value);
   if (answerInput.value.trim() === "") {
-    answerMessage.textContent = "答えを入力してね！";
+    answerMessage.textContent = "答えを入力して右の虫眼鏡マークを押して！";
     answerMessage.className = "answer-message is-error";
     return;
   }
@@ -121,7 +121,7 @@ const giftData = {
     html: '<p class="result-text">あたりは3つだよ！</p>'
   },
   6: {
-    title: "あたり！\nイラストのプレゼント！",
+    title: "あたり！\nさやから！イラストのプレゼント！",
     html: '<img class="illustration" src="assets/illustration6.png" alt="6番のイラストのプレゼント">',
     confetti: true
   }
