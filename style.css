@@ -20,6 +20,23 @@ html,
 body {
   min-height: 100%;
   margin: 0;
+  background:
+    radial-gradient(
+      circle at 10% 12%,
+      rgba(255, 255, 255, .9) 0 7px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(255, 255, 255, .8) 0 5px,
+      transparent 6px
+    ),
+    linear-gradient(
+      180deg,
+      #fff1f6 0%,
+      #fff9ef 55%,
+      #fff4f7 100%
+    );
 }
 
 body {
@@ -164,9 +181,10 @@ input {
 .answer-message.is-correct { color: var(--google-green); }
 
 .gate-hint {
-  margin: 3px 0 0;
-  color: #8a8a8a;
-  font-size: 11px;
+  margin: 10px 0 0;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .gate-page.is-leaving {
@@ -184,7 +202,7 @@ input {
 }
 
 .birthday-page.is-entering {
-  animation: birthdayEnter .6s ease both;
+  animation: none;
 }
 
 .page {
@@ -192,20 +210,23 @@ input {
   min-height: 100vh;
   min-height: 100dvh;
   margin: 0 auto;
-  padding: 0 18px max(32px, env(safe-area-inset-bottom));
+  padding: 8px 18px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .hero {
   width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
   animation: fadeDown .7s ease both;
 }
 
 .small-title {
-  margin: 0 0 8px;
+  margin: 0 0 12px;
   font-family: "Quicksand", sans-serif;
   font-size: 12px;
   font-weight: 700;
@@ -223,19 +244,19 @@ input {
 }
 
 .description {
-  margin: 18px 0 8px;
+  margin: 14px 0 4px;
   font-size: 15px;
-  line-height: 1.9;
+  line-height: 1.7;
 }
 
 .gift-area {
   width: 100%;
-  flex: 1;
+  flex: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-content: center;
+  align-content: start;
   gap: 12px 14px;
-  margin-top: 12px;
+  margin-top: 10px;
   padding: 8px 10px;
 }
 
@@ -483,3 +504,23 @@ input {
     scroll-behavior: auto !important;
   }
 }
+
+.birthday-page {
+  margin: 0;
+  padding: 0;
+}
+
+.birthday-page[hidden] {
+  display: none;
+}
+
+.hero {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.gate-page[hidden],
+.birthday-page[hidden] {
+  display: none !important;
+}
+

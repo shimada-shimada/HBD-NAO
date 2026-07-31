@@ -121,7 +121,7 @@ const giftData = {
     html: '<p class="result-text">あたりは3つだよ！</p>'
   },
   6: {
-    title: "あたり！\nさやから！イラストのプレゼント！",
+    title: "あたり！\nさやから！\nイラストのプレゼント！",
     html: '<img class="illustration" src="assets/illustration6.png" alt="6番のイラストのプレゼント">',
     confetti: true
   }
