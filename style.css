@@ -192,8 +192,7 @@ input {
   min-height: 100vh;
   min-height: 100dvh;
   margin: 0 auto;
-  padding: calc(env(safe-area-inset-top) + 8px) 18px
-           max(32px, env(safe-area-inset-bottom));
+  padding: 0 18px max(32px, env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   align-items: center;
